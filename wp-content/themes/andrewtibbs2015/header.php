@@ -23,29 +23,23 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyfifteen' ); ?></a>
 
-	<div id="sidebar" class="sidebar">
-		<header id="masthead" class="site-header" role="banner">
-			<div class="site-branding">
-				<?php
-					if ( is_front_page() && is_home() ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php else : ?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php endif;
+<header role="header">
+	<div class="row">
+		<div class="medium-12 columns">
+	 		<p class="location"><span class="icon"></span>Portland, Oregon</p>
+	 	</div>
+	</div>
+ 	
 
-					$description = get_bloginfo( 'description', 'display' );
-					if ( $description || is_customize_preview() ) : ?>
-						<p class="site-description"><?php echo $description; ?></p>
-					<?php endif;
-				?>
-				<button class="secondary-toggle"><?php _e( 'Menu and widgets', 'twentyfifteen' ); ?></button>
-			</div><!-- .site-branding -->
-		</header><!-- .site-header -->
+ 	<div class="nav-bar">
+ 		<div class="row">
+ 			<div class="medium-12.columns">
+ 				<a href="/" class="logo" title="Andrew Tibbs">Andrew Tibbs</a>
+ 				<a href="mailto:tibbs.andrew@gmail.com" class="contact" title="Contact Andrew">Contact</a>
+ 			</div>
+ 		</div>
+ 	</div>
+ </header>
 
-		<?php get_sidebar(); ?>
-	</div><!-- .sidebar -->
-
-	<div id="content" class="site-content">
+ <main role="main">
