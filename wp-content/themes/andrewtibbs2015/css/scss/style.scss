@@ -1,0 +1,259 @@
+/*
+Theme name: Tibbs
+*/
+
+@import 
+	"normalize",
+	"foundation";
+
+
+
+
+// Theme Colors
+$base: #353535;
+$primary: #ff543d;
+
+// Spacial
+
+
+
+// Breakpoints
+$vpsmallest: 320px;
+$vpsmall: 500px;
+$vpmedium: 641px;
+$vplarge: 767px;
+
+
+
+
+/* 1.2 Mixins & Placeholders */
+%font-primary {
+	//font-family: 'Gotham A', 'Gotham B'; font-weight: 300; font-style: normal;
+}
+
+%font-secondary {
+	//font-family: 'Gotham A', 'Gotham B'; font-weight: 500; font-style: normal;
+}
+
+%font-tertiary {
+	//font-family: "TrendSansOne"; font-weight: normal;
+}
+
+%uppercase {
+	text-transform: uppercase;
+}
+%hidetext {
+  text-indent: 150%;
+  white-space: nowrap;                                                 
+  overflow: hidden;
+}
+%ie-inline-block {
+    *display: inline;
+    zoom: 1;
+}
+%group {
+	&:before,
+	&:after {
+	    content:"";
+	    display:table;
+	}
+	&:after {
+	    clear:both;
+	}
+	zoom: 1;
+}
+%helvetica {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+// Media Queries
+@mixin break-max($breakpoint) {
+	@media screen and (max-width: $breakpoint) {
+		@content;
+	}
+}
+@mixin break-min($breakpoint) {
+	@media screen and (min-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin link-arrow($color, $sizeX, $sizeY) {
+	position: relative;
+	color: $color;
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-top: $sizeX solid transparent;
+		border-left: $sizeY solid $color;
+		border-bottom: $sizeX solid transparent;
+		margin-left: 10px;
+	}
+}
+
+// Transitions
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+@mixin vertical-center {
+	position: relative;
+	top: 50%;
+	display: block;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+@mixin horizontal-center($position) {
+	position: $position;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+@mixin content-block-style($background, $color) {
+	background: $background;
+	color: $color;
+	h1, h2, h3, h4, h5, p, li {
+		color: $color;
+	}
+}
+
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+div {}
+
+.nav-bar {
+	//background: $base;
+	//color: white;
+	@extend %group;
+	.logo {
+		//float: left;
+		padding: 20px;
+	}
+}
+
+
+h1, h2, h3, h4, h5, h6, li, p {
+	font-family: 'Open Sans', sans-serif;
+}
+.location {
+	text-align: center;
+	.fa {
+		font-size:20px;
+		margin-right: 10px;
+	}
+	font-weight: 600;
+	  float: right;
+  margin: 60px 0;
+}
+.logo {
+	@extend %hidetext;
+	display: block;
+	width: 300px;
+  	height: 111px;
+	float: left;
+	background: transparent url(images/logo-black.svg) no-repeat 0px 0px;
+	  margin-bottom: 40px;
+	  margin-top: 40px;
+	&:hover {
+		//background-color: $primary;
+	}
+}
+.contact {
+	float: right;
+	color: white;
+	display: block;
+	padding: 43px;
+	i {
+		font-size: 33px;
+	}
+	&:hover {
+		background: $primary;
+		color: white;
+	}
+}
+
+.front-banner {
+	background: $primary;
+	color: white;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 80px;
+	text-align: center;
+	display: none;
+	p {
+		padding-bottom: 100px;
+		font-weight: 300;
+		font-style: italic;
+		font-size: 36px;
+	}
+}
+
+
+
+.links {
+	margin: 40px 0 0;
+	list-style: none;
+	li {
+		float: left;
+		font-weight: 300;
+		font-size: 16px;
+		margin-right: 50px;
+		&:last-child {
+			margin-right: 0px;
+		}
+		a {
+			color: $primary;
+		}
+		i {
+			font-size: 20px;
+			margin-right: 10px;
+		}
+	}
+}
+.current-work, .previous-work, .photography, footer {
+	margin-top: 100px;
+	h2 {
+		font-size: 24px;
+		@extend %uppercase;
+		font-weight: 300;
+		i {
+			font-size: 40px;
+		}
+	}
+
+	h3 {
+		font-size: 24px;
+		@extend %uppercase;
+		font-weight: 800;
+		span {
+			text-transform: none;
+		}
+		+ p {
+			font-size: 22px;
+			font-weight: 300;
+			font-style: italic;
+		}
+	}
+}
+
+.photography {
+	display: none;
+}
+
+footer[role="contentinfo"] {
+	margin-top: 100px;
+	padding-bottom: 40px;
+}
+
