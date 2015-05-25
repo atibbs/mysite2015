@@ -11,12 +11,8 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php
-		// Post thumbnail.
-		//twentyfifteen_post_thumbnail();
-	?>
-
-	<header class="entry-header">
+	
+	<div class="entry-header">
 		<?php
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
@@ -24,25 +20,41 @@
 				the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 			endif;
 		?>
-	</header><!-- .entry-header -->
+	</div><!-- .entry-header -->
 
+	<?php
+		// Post thumbnail.
+		twentyfifteen_post_thumbnail();
+	?>
 	<div class="entry-content">
-		<?php
-			/* translators: %s: Name of current post */
-			the_content( sprintf(
-				__( 'Continue reading %s', 'twentyfifteen' ),
-				the_title( '<span class="screen-reader-text">', '</span>', false )
-			) );
+		<div class="row">
+			<div class="medium-4 columns">
+				<?php the_meta(); ?>
+			</div>
+			<div class="medium-8 columns">
+				
+				<?php
+					/* translators: %s: Name of current post */
+					the_content( sprintf(
+						__( 'Continue reading %s', 'twentyfifteen' ),
+						the_title( '<span class="screen-reader-text">', '</span>', false )
+					) );
 
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
-				'separator'   => '<span class="screen-reader-text">, </span>',
-			) );
-		?>
+					wp_link_pages( array(
+						'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfifteen' ) . '</span>',
+						'after'       => '</div>',
+						'link_before' => '<span>',
+						'link_after'  => '</span>',
+						'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>%',
+						'separator'   => '<span class="screen-reader-text">, </span>',
+					) );
+				?>
+				
+				<?php //twentyfifteen_entry_meta(); ?>
+				<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
+			
+			</div>
+		</div>
 	</div><!-- .entry-content -->
 
 	<?php
@@ -52,9 +64,5 @@
 		endif;
 	?>
 
-	<footer class="entry-footer">
-		<?php twentyfifteen_entry_meta(); ?>
-		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-	</footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->
