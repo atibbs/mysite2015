@@ -26,13 +26,13 @@
 		// Post thumbnail.
 		twentyfifteen_post_thumbnail();
 	?>
+	
 	<div class="entry-content">
 		<div class="row">
-			<div class="medium-4 columns">
+			<div class="medium-3 columns push-9">
 				<?php the_meta(); ?>
 			</div>
-			<div class="medium-8 columns">
-				
+			<div class="medium-9 columns pull-3">
 				<?php
 					/* translators: %s: Name of current post */
 					the_content( sprintf(
@@ -52,10 +52,14 @@
 				
 				<?php //twentyfifteen_entry_meta(); ?>
 				<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
-			
 			</div>
+			
 		</div>
+		
+	
 	</div><!-- .entry-content -->
+
+	
 
 	<?php
 		// Author bio.

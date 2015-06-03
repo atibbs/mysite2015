@@ -138,7 +138,7 @@ body {
 
 header[role="header"] {
 	height: 60px;
-	margin-bottom: 20px;
+	margin-bottom: 80px;
 }
 
 .nav-bar {
@@ -197,6 +197,25 @@ h3 {
 		z-index: 10;
 		float:left;
 	}
+	&.active {
+		svg {
+			display: none;
+		}
+		&:before {
+			content:'\00D7';
+			position: absolute;
+			z-index: 11;
+			width: 100%;
+			display: block;
+			left: 0;
+			top: 0;
+			height: 100%;
+			font-size: 30px;
+			text-align: center;
+			color: white;
+			line-height: 60px;
+		}
+	}
 }
 .menu {
 	list-style: none;
@@ -206,7 +225,6 @@ h3 {
 	position: absolute;
 	left: 0;
 	top: 0;
-	display: none;
 	li {
 		font-family: "Open Sans", sans-serif;
 		font-weight: 300;
@@ -239,26 +257,50 @@ h3 {
 	top: 0;
 	left: 0;
 	z-index: 100;
-	&:hover {
+}
+.no-touch {
+	.nav-bar {
 		.menu {
-			display: block;
-			width: auto;
-			height: auto;
+			display: none;
+		}
+		&:hover {
+			.menu {
+				display: block;
+				width: auto;
+				height: auto;
+			}
+		}
+	}
+}
+.touch {
+	.nav-bar {
+		.menu {
+			display: none;
+			&.open {
+				display: block;
+			}
 		}
 	}
 }
 .breadcrumb {
 	padding-left: 80px;
+	padding-top: 10px;
 	font-size: 26px;
 	font-family: "Open Sans", sans-serif;
 	font-weight: 300;
-	line-height: 60px;
+	line-height: 30px;
 	margin: 0;
+	@include break-max(640px) {
+		font-size: 21px;
+		line-height: 25px;
+		padding-top: 10px;
+	}
 	a {
 		color: white;
 	}
 }
 .admin-bar {
+
 	.nav-bar {
 		top: 32px;
 	}
@@ -267,7 +309,7 @@ h3 {
 .introduction {
 	padding-top: 60px;
 	padding-bottom: 50px;
-	margin-top: 80px;
+	//margin-top: 80px;
 	margin-bottom: 80px;
 	border-top: 5px solid $primary;
 	border-bottom: 5px solid $primary;
@@ -287,13 +329,24 @@ h3 {
 		font-size: 12px;
 		margin-right: 20px;
 		display: inline-block;
-		margin
 		a {
 			color: $primary;
 		}
 		i {
 			font-size: 14px;
 			padding-right: 10px;
+		}
+		&:last-child {
+			margin-right: 0;
+		}
+		@include break-max(500px) {
+			i {
+				font-size: 20px;
+				padding-right: 0;
+			}
+			span {
+				display: none;
+			}
 		}
 	}
 }
@@ -320,6 +373,13 @@ h3 {
 				}
 			}
 		}
+		@include break-max(640px) {
+			width: 100%;
+			margin-bottom: 10px;
+			> a {
+				display: block;
+			}
+		}
 	}
 	.nav-previous {
 		float: left;
@@ -341,12 +401,17 @@ h3 {
 		//display: block;
 	}
 }
-
+.entry-header {
+	margin-bottom: 40px;
+}
 .entry-title {
 	font-weight: 300;
 	font-size: 40px;
 }
 
+.post-thumbnail {
+	margin-bottom: 40px;
+}
 .post-label {
 	font-family: "Open Sans", sans-serif;
 	font-weight: 800;
@@ -362,20 +427,51 @@ h3 {
 		font-family: "Merriweather", Georgia, serif;
 		font-size: 18px;
 	}
+	.flex-video {
+		clear: left;
+		&.alignleft {
+			width: 33%;
+			float: left;
+			margin-right: 15px;
+			@include break-max(640px) {
+				width: 100%;
+				margin-right: 0;
+				margin-bottom: 10px;
+				float: none;
+			}
+		}
+	}
+}
+figure, .wp-caption {
+	margin: 0;
+	margin-bottom: 20px;
+	max-width: 100%;
+}
+.wp-caption-text {
+  font-family: "Merriweather", Georgia, serif;
+  font-size: 12px;
+  margin-top: 10px;
+  opacity: 0.6;
+  font-weight: 700;
+  font-style: italic;
 }
 
 .post-meta {
 	list-style: none;
-	margin: 0;
+	margin: 0 0 40px;
+	clear: both;
+	li {
+		margin-bottom: 15px;
+	}
 	.post-meta-key {
-		display: none;
+		//display: none;
+		font-weight: 800;
+		text-transform: uppercase;
+		font-size: 14px;
+		letter-spacing: 1px;
+		display: block;
 	}
-	iframe {
-		max-width: 100%;
-		video {
-			max-width: 100%;
-		}
-	}
+
 }
 
 .portfolio-section {
@@ -385,15 +481,29 @@ h3 {
 	.portfolio {
 		margin: 0;
 		list-style: none;
+		@include break-max(640px) {
+			margin-bottom: 40px;
+		}
 		li {
 			display: block;
 			position: relative;
 			background: darken($primary, 5);
 			padding: 0;
-			margin-bottom: 20px;
+			margin-bottom: 10px;
 			margin-right: 10px;
 			float: left;
 			width: calc(50% - 5px);
+			@include break-max(500px) {
+				width: 100%;
+				margin-right: 0;
+				float: none;
+			}
+			@media screen and (min-width: 641px) and (max-width: 800px) {
+				width: 100%;
+				margin-right: 0;
+				float: none;
+			}
+			
 			&:nth-child(even) {
 				margin-right: 0;
 			}
@@ -461,7 +571,15 @@ h3 {
 	}
 	
 }
-
+/* .approach-section {
+	margin: 80px 0;
+	padding: 40px 0;
+	border-top: 5px solid $primary;
+	p {
+		font-size: 21px;
+		font-family: "Merriweather", Georgia, serif;
+	}
+} */
 .contact-section {
 	margin: 80px 0;
 	padding: 40px 0 60px;
@@ -477,6 +595,11 @@ h3 {
 		float: left;
 		margin-right: 20px;
 		letter-spacing: 1px;
+		@include break-max(640px) {
+			display: block;
+			width: 100%;
+			margin-bottom: 10px;
+		}
 		a {
 			padding: 15px 25px;
 			border: 1px solid white;

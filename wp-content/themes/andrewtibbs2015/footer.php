@@ -16,9 +16,9 @@
 		<div class="medium-12 columns">
 			<a href="<?php echo get_home_url(); ?>" class="brand" title="Andrew Tibbs">Andrew Tibbs</a>
 			<ul class="links">
-				<li><a href="https://twitter.com/tibbspdx" title="Twitter" target="_blank"><i class="fa fa-twitter"></i>twitter</a></li>
-				<li><a href="https://www.linkedin.com/in/andrewtibbs" title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i>linkedin</a></li>
-				<li><a href="mailto:tibbs.andrew@gmail.com" title="Email me"><i class="fa fa-envelope"></i>email</a></li>
+				<li><a href="https://twitter.com/tibbspdx" title="Twitter" target="_blank"><i class="fa fa-twitter"></i><span>twitter</span></a></li>
+				<li><a href="https://www.linkedin.com/in/andrewtibbs" title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i><span>linkedin</span></a></li>
+				<li><a href="mailto:tibbs.andrew@gmail.com" title="Email me"><i class="fa fa-envelope"></i><span>email</span></a></li>
 			</ul>
 		</div>
 	</div>
